@@ -4,7 +4,12 @@ from nonebot.adapters.onebot.v11 import Message,MessageEvent,Bot,GROUP
 from nonebot.params import CommandArg, State
 from .sql import add_data,update_data,get_data
 
-meal = on_command('带饭',priority=1, block=True,permission=GROUP)
+meal = on_command('带饭',aliases = {'带水','帶飯'},priority=1, block=True,permission=GROUP)
+
+def isdigitpro(s:str):
+    if s.isdigit() or s[0] == '-' and s[1:].isdigit:
+        return True
+    return False
 
 @meal.handle()
 async def _(bot:Bot, event: MessageEvent, msg: Message = CommandArg()):
@@ -18,7 +23,7 @@ async def _(bot:Bot, event: MessageEvent, msg: Message = CommandArg()):
             users.append(msg_seg.data["qq"])
         elif msg_seg.type == "text":
             for text in str(msg_seg).split():
-                if not text.isdigit():
+                if not isdigitpro(text):
                     if mode == '0':
                         mode = text
                     else:

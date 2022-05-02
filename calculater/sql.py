@@ -1,4 +1,5 @@
 import sqlite3
+from datetime import datetime
 _reponame = 'moneycalc.sqlite'
 # _sheet = 'pokelanguage'
 
@@ -39,7 +40,7 @@ def add_data(_sheet,user1,user2,money):
     sql = f"""insert into {_sheet} values({user1}, {user2}, {money})"""
     cursor.execute(sql)
     conn.commit()
-    add_into_log(sql)
+    add_into_log(f'add group= {_sheet} user1= {user1} user2= {user2} money= {str(money)} time= {str(datetime.now())}')
     cursor.close()
     conn.close()
 
@@ -49,7 +50,7 @@ def update_data(_sheet,user1,user2,money):
     cursor = conn.cursor()
     sql = f"""update {_sheet} set money = "{money}" where user1 = "{user1}" and user2 = "{user2}" """
     cursor.execute(sql)
-    add_into_log(sql)
+    add_into_log(f'update group={_sheet} user1= {user1} user2= {user2} money= {str(money)} time= {str(datetime.now())}')
     conn.commit()
     cursor.close()
     conn.close()

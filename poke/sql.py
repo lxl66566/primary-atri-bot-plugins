@@ -1,5 +1,5 @@
 import sqlite3
-_reponame = "pokelanguage.sqlite3"
+_reponame = "pokelanguage.sqlite"
 _sheet = 'pokelanguage'
 
 def init():

@@ -13,7 +13,7 @@ def init(_sheet):
     sql = f"""create table if not exists {_sheet}(
         user1 varchar not null,
         user2 varchar,
-        money int
+        money real
     )
     """#money正表示user1欠user2钱。为负则反之
     cursor.execute(sql)

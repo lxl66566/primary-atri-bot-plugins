@@ -14,7 +14,7 @@ async def _group_poke(event: Event) -> bool:
     return value
 
 poke = on_notice(rule=_group_poke, priority=1, block=True)
-change_language = on_command('select',aliases = {'选择','choose'},priority=1, block=True)
+change_language = on_command('select',aliases = {'选择'},priority=1, block=True)
 debug1 = on_command('print_hole_database',priority=1, block=True)
 
 @poke.handle()
@@ -61,6 +61,7 @@ async def _(event: Event):
 @change_language.handle()
 async def ch_(event : Event, msg: Message = CommandArg()):
     msg = msg.extract_plain_text().strip()
+    msg = msg.lower()
     if msg not in ('日语','日本語','英语','english'):
         await change_language.finish('请选择正确的语言!')
         # await change_language.finish(msg)

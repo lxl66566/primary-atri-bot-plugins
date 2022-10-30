@@ -1,7 +1,5 @@
-from webbrowser import get
-from nonebot.adapters.onebot.v11 import Message, Event, OneBotAdapterException
+from nonebot.adapters.onebot.v11 import Message, Event
 from nonebot import on_notice,on_command
-from nonebot.adapters.onebot.v11.message import MessageSegment
 from nonebot.params import CommandArg, Message
 from nonebot.log import logger
 import random
@@ -55,8 +53,8 @@ async def _(event: Event):
                 stop = 1
         try:
             await poke.finish(str1)
-        except OneBotAdapterException:
-            logger.exception("发送失败！")
+        except:
+            pass
 
 @change_language.handle()
 async def ch_(event : Event, msg: Message = CommandArg()):

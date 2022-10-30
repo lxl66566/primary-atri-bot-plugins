@@ -1,10 +1,10 @@
 from nonebot import on_command
 from nonebot.adapters.onebot.v11 import Message,MessageEvent,Bot,GROUP
 # from nonebot.typing import T_Handler, T_RuleChecker, T_State
-from nonebot.params import CommandArg, State
+from nonebot.params import CommandArg
 from .sql import add_data,update_data,get_data
 
-meal = on_command('带饭',aliases = {'带水','帶飯'},priority=1, block=True,permission=GROUP) 
+meal = on_command('带饭',aliases = {'带水','帶飯'},priority=1, block=True,permission=GROUP)
 
 @meal.handle()
 async def _(bot:Bot, event: MessageEvent, msg: Message = CommandArg()):

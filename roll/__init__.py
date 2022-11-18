@@ -23,13 +23,13 @@ async def handle_first_receive(msg: Message = CommandArg()):
     if not 2 <= len(args) <= 3:
         await rd.finish("请输入空格隔开的两个/三个数字！")
     elif len(args) == 2:
-        await rd.finish(str(random.randint(args[0], args[1])) + f'  in({args[0]},{args[1]})')
+        await rd.finish(str(random.randint(args[0], args[1])) + f'  in[{args[0]},{args[1]}]')
     else:
         s = ''
         for i in range(args[2]):
             s += str(random.randint(args[0], args[1]))
             s += ' '
-        await rd.finish(s + f' in({args[0]},{args[1]})')
+        await rd.finish(s + f' in[{args[0]},{args[1]}]')
 
 
 @rf.handle()
@@ -42,9 +42,9 @@ async def handle_first_receive(msg: Message = CommandArg()):
     if len(args) not in (0, 2, 3):
         await rd.finish("请输入空格隔开的两个/三个数字！")
     elif len(args) == 0:
-        await rd.finish(str(random.random()) + f' in(0,1)')
+        await rd.finish(str(random.random()) + f' in[0,1]')
     elif len(args) == 2:
-        await rd.finish(str(random.uniform(args[0], args[1])) + f'  in({args[0]},{args[1]})')
+        await rd.finish(str(random.uniform(args[0], args[1])) + f'  in[{args[0]},{args[1]}]')
     else:
         times = str(int(args[2]))
         if not times.isdigit():
@@ -53,4 +53,4 @@ async def handle_first_receive(msg: Message = CommandArg()):
         for i in range(int(times)):
             s += str(random.uniform(args[0], args[1]))
             s += '\n'
-        await rd.finish(s + f'\nin({args[0]},{args[1]})')
+        await rd.finish(s + f'\nin[{args[0]},{args[1]}]')

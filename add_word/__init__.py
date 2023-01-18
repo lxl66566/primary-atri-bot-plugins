@@ -14,7 +14,7 @@ async def _(event: MessageEvent,msg: Message = CommandArg()):
         await add_word.finish("请输入单词！")
     eng = ['english: ']
     jap = ['japanese: ']
-    with open(r'D:\program\Qt\wordsreciterGUI\wordsreciter GUI v1.3.1\notebook.json','r',encoding='utf-8') as f:
+    with open(r'D:\program\Qt\merge_anki\notebook.json','r',encoding='utf-8') as f:
         notebook = json.load(f)
         notebook['english']['default'] = set(notebook['english']['default'])
         notebook['japanese']['default'] = set(notebook['japanese']['default'])
